@@ -1,7 +1,7 @@
 
 
 
-symbols = [' ', 'O', 'X']
+symbols = ['   ', ' O ', ' X ']
 EMPTY = 0
 J1 = 1
 J2 = 2
@@ -30,11 +30,11 @@ class grid:
         -------
     """
     def display(self):
-        print("-------------")
+        tab ="-------------\n"
         for i in range(3):
-            print("|",symbols[self.cells[i*3]], "|",  symbols[self.cells[i*3+1]], "|",  symbols[self.cells[i*3+2]], "|");
-            print("-------------")
-
+            tab+="|"+symbols[self.cells[i*3]]+ "|"+  symbols[self.cells[i*3+1]]+ "|"+  symbols[self.cells[i*3+2]]+ "|\n"
+            tab+="-------------\n"
+        return tab
 
     """ Test if 'player' wins the game"""
     def winner(self, player):

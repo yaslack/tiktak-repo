@@ -38,18 +38,35 @@ def client_program():
         if player == 1:
             data = client_socket.recv(1024).decode()
             if data == "Play P1":
-                message = input("Your Turn : ")
-                if message == "":
-                    message = "rien"
+                print('Generating the board ...')
+                tab = client_socket.recv(1024).decode()
+                print(tab)
+                message=""
+                while(True):
+                    message = input("Your Turn : ")
+                    if(message.isdigit()):
+                        if(0 <= int(message) <= 8):
+                            break
+                    print("You need to enter a number between 0 and 8\n")
+                    print(tab)
+                    
                 client_socket.send(message.encode())  # send message
             elif data == "Wait":
                 print("Wait for your Turn ...")
         if player == 2:
             data = client_socket.recv(1024).decode()
             if data == "Play P2":
-                message = input("Your Turn : ")
-                if message == "":
-                    message = "rien"
+                print('Generating the board ...')
+                tab = client_socket.recv(1024).decode()
+                print(tab)
+                message=""
+                while(True):
+                    message = input("Your Turn : ")
+                    if(message.isdigit()):
+                        if(0 <= int(message) <= 8):
+                            break
+                    print("You need to enter a number between 0 and 8\n")
+                    print(tab)
                 client_socket.send(message.encode())  # send message
 
             elif data == "Wait":

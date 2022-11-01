@@ -25,7 +25,6 @@ def real_handler(signum, frame, arg1):
 def main():
     grids = [grid(), grid(), grid()]
     current_player = J1
-
     l = []
     print('Opening server')
     s = socket . socket ( socket . AF_INET6 , socket . SOCK_STREAM , 0)
@@ -53,6 +52,7 @@ def main():
                     news.sendall(b"Second")
                     l.append(news)
                     sendUsers(l,ss,"Play P1")
+                    sendUsers(l,ss,grids[J1].display())
                     currentPlayer = 1
                 else:
                     news, a = s.accept()
@@ -64,10 +64,12 @@ def main():
                     disconnect(l,ss)
                 if currentPlayer == 1:
                     sendUsers(l,ss,"Play P2")
+                    sendUsers(l,ss,grids[J1].display())
                     sendUser(ss,"Wait")
                     currentPlayer = 2
                 elif currentPlayer == 2:
                     sendUsers(l,ss,"Play P1")
+                    sendUsers(l,ss,grids[J1].display())
                     sendUser(ss,"Wait")
                     currentPlayer = 1
     s.close()
