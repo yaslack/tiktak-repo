@@ -53,6 +53,12 @@ def client_program():
                 client_socket.send(message.encode())  # send message
             elif data == "Wait":
                 print("Wait for your Turn ...")
+            elif data == "over":
+                print('Generating the board ...')
+                print("Game Over")
+                tab = client_socket.recv(1024).decode()
+                print(tab)
+                break
         if player == 2:
             data = client_socket.recv(1024).decode()
             if data == "Play P2":
@@ -71,6 +77,12 @@ def client_program():
 
             elif data == "Wait":
                 print("Wait for your Turn ...")
+            elif data == "over":
+                print('Generating the board ...')
+                print("Game Over")
+                tab = client_socket.recv(1024).decode()
+                print(tab)
+                break
 
     message = "exit"
     client_socket.send(message.encode())
